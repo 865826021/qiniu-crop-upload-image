@@ -28,3 +28,6 @@ Or
 `
     <script src="./dist/bundle.js"></script>
 `
+
+***More***
+[https://github.com/Macroyep/qiniu-crop-upload-image](https://github.com/Macroyep/qiniu-crop-upload-image)
