@@ -1,11 +1,11 @@
 ![sample](sample.png)
 # qiniu-crop-upload-image
-  # Install
+**Install**
+`
     npm i qiniu-crop-upload-image --save
-    
-  # Usage   
-`    
-    
+`   
+**Usage**
+```
     var crop=require('qiniu-crop-upload-image');
     var options = {
         debug: true,
@@ -17,12 +17,12 @@
         console.log(imageSrc)//the image-url your need
     });
  
-
     //start
     document.getElementById('pick').onclick = ()=> {
         crop.start();
     };
-`
+
+```
 
 Or
 `
