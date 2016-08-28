@@ -1,0 +1,37 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.crop-mask {
+  background-color: rgba(128, 128, 128, 0.69);
+
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  z-index: 100;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  .content {
+    display: inline-block;
+    margin-top: 10%;
+    width: 50%;
+    height: 300px;
+    .ctrl-bar {
+      margin-top: 10px;
+      text-align: center;
+      a {
+        text-decoration: none;
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 3px;
+        border: 1px solid white;
+        color: white;
+      }
+    }
+  }
+}

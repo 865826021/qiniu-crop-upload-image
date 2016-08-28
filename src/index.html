@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+<a href="javascript:;" id="pick">选择图片</a>
+
+
+</body>
+</html>
+
+<script>
+
+    (function () {
+        var options = {
+            debug: true,
+            qiniu_token_url: '',// like /api/qiniu/get-token
+            qiniu_res_root: '',// like http://7xt6dfp.com1.z0.glb.clouddn.com/
+
+        };
+        crop.init(options, (imageSrc)=> {
+            console.log(imageSrc)//the image-url your need
+        });
+
+
+        //start
+        document.getElementById('pick').onclick = ()=> {
+            crop.start();
+        };
+    })();
+
+</script>
