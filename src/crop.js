@@ -57,22 +57,43 @@ var pushImageToQiniu = function (imageData, cb) {
 
     });
     promise.then((token) => {
-
-        ajax({
-                url: 'http://up.qiniu.com/putb64/-1',
-                method: 'POST',
-                data: imageData,
-                headers: {
-                    'Content-Type': 'application/octet-stream',
-                    'Authorization': 'UpToken ' + token
-                },
-            },
-            function (err, body) {
-                if (err) return console.log(err);
-
-                cb(body.key);
+        var url = "http://up-z2.qiniu.com/putb64/-1";
+        var xhr = new XMLHttpRequest();
+        var xhrget = new XMLHttpRequest();
+        var obj;
+        //xhr.onreadystatechange=function(){
+        //	if (xhrget.readyState==4){
+        //		 obj = JSON.parse(xhrget.responseText);
+        //	}
+        //}
+        //xhrget.open("GET", "http://jssdk.demo.qiniu.io/uptoken", true);
+        // xhrget.send();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4) {
+                // document.getElementById("myDiv").innerHTML = xhr.responseText;
+                cb((JSON.parse(xhr.responseText).key));
             }
-        )
+        }
+
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/octet-stream");
+        xhr.setRequestHeader("Authorization", "UpToken " + token);
+        xhr.send(imageData);
+        // ajax({
+        //         url: 'http://up-z2.qiniu.com/putb64/-1',
+        //         method: 'POST',
+        //         data: imageData,
+        //         headers: {
+        //             'Content-Type': 'application/octet-stream',
+        //             'Authorization': 'UpToken ' + token
+        //         },
+        //     },
+        //     function (err, body) {
+        //         if (err) return console.log(err);
+        //
+        //         cb(body.key);
+        //     }
+        // )
     });
 
 
