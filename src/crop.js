@@ -20,10 +20,11 @@ var popContent = `
         <div class="">
             <img id="image" />
         </div>
-        <div class="ctrl-bar">
+        
+    </div>
+    <div class="ctrl-bar" style="margin-top: 10px;">
             <a href="javascript:;" id="cancel">取消</a>
             <a href="javascript:;" id="confirm">确定</a>
-        </div>
     </div>
 `;
 
@@ -49,13 +50,13 @@ var getQiniuToken = function (cb) {
 };
 var pushImageToQiniu = function (imageData, cb) {
 
-    var promise = new Promise((resolve, reject)=> {
-        getQiniuToken((token)=> {
+    var promise = new Promise((resolve, reject) => {
+        getQiniuToken((token) => {
             resolve(token);
         });
 
     });
-    promise.then((token)=> {
+    promise.then((token) => {
 
         token = 'xLb9_lREhrKieoYJNSdD4ucFxgYOvLV90l0OTdP6:eeZS71WrpUiJjKa8NJ_cgkFVG0M=:eyJzY29wZSI6ImRhb3FpLWFjdGl2aXR5IiwiZGVhZGxpbmUiOjE0NzIzOTM2OTd9';
         ajax({
@@ -125,9 +126,9 @@ var crop = {
             }, false);
 
 
-            document.getElementById('confirm').onclick = ()=> {
+            document.getElementById('confirm').onclick = () => {
                 var imageDataUrl = cropper.getCroppedCanvas().toDataURL('image/jpeg');
-                pushImageToQiniu(imageDataUrl.split(',')[1], (imgSrc)=> {
+                pushImageToQiniu(imageDataUrl.split(',')[1], (imgSrc) => {
                     if (!defaults.qiniu_res_root)
                         return console.error('qiniu_res_root is null');
                     let imgUrl = defaults['qiniu_res_root'] + imgSrc
@@ -139,7 +140,7 @@ var crop = {
                 });
 
             };
-            document.getElementById('cancel').onclick = ()=> {
+            document.getElementById('cancel').onclick = () => {
                 document.getElementsByClassName('crop-mask')[0].style.display = 'none'
             };
 
