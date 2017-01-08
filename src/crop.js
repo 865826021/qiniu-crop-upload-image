@@ -58,7 +58,6 @@ var pushImageToQiniu = function (imageData, cb) {
     });
     promise.then((token) => {
 
-        token = 'xLb9_lREhrKieoYJNSdD4ucFxgYOvLV90l0OTdP6:eeZS71WrpUiJjKa8NJ_cgkFVG0M=:eyJzY29wZSI6ImRhb3FpLWFjdGl2aXR5IiwiZGVhZGxpbmUiOjE0NzIzOTM2OTd9';
         ajax({
                 url: 'http://up.qiniu.com/putb64/-1',
                 method: 'POST',
